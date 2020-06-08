@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		8A5BFEC4248DDDBB00F34DCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC3248DDDBB00F34DCB /* AppDelegate.swift */; };
 		8A5BFEC6248DDDBB00F34DCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */; };
-		8A5BFEC8248DDDBB00F34DCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC7248DDDBB00F34DCB /* ViewController.swift */; };
-		8A5BFECB248DDDBB00F34DCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC9248DDDBB00F34DCB /* Main.storyboard */; };
 		8A5BFECD248DDDBD00F34DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BFECC248DDDBD00F34DCB /* Assets.xcassets */; };
 		8A5BFED0248DDDBD00F34DCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BFECE248DDDBD00F34DCB /* LaunchScreen.storyboard */; };
 		8A5BFEDB248DDDBD00F34DCB /* Envoy_CoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEDA248DDDBD00F34DCB /* Envoy_CoffeeTests.swift */; };
 		8A5BFEE6248DDDBD00F34DCB /* Envoy_CoffeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEE5248DDDBD00F34DCB /* Envoy_CoffeeUITests.swift */; };
+		8A5BFEF7248DE04D00F34DCB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEF6248DE04D00F34DCB /* HomeViewController.swift */; };
+		8A5BFEF9248DE10200F34DCB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEF8248DE10200F34DCB /* HomeView.swift */; };
+		8A5BFEFC248EE6B800F34DCB /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEFB248EE6B800F34DCB /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +39,6 @@
 		8A5BFEC0248DDDBB00F34DCB /* Envoy-Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Envoy-Coffee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5BFEC3248DDDBB00F34DCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8A5BFEC7248DDDBB00F34DCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8A5BFECA248DDDBB00F34DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A5BFECC248DDDBD00F34DCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5BFECF248DDDBD00F34DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5BFED1248DDDBD00F34DCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,9 @@
 		8A5BFEE1248DDDBD00F34DCB /* Envoy-CoffeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Envoy-CoffeeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5BFEE5248DDDBD00F34DCB /* Envoy_CoffeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envoy_CoffeeUITests.swift; sourceTree = "<group>"; };
 		8A5BFEE7248DDDBD00F34DCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A5BFEF6248DE04D00F34DCB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8A5BFEF8248DE10200F34DCB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8A5BFEFB248EE6B800F34DCB /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,14 @@
 		8A5BFEC2248DDDBB00F34DCB /* Envoy-Coffee */ = {
 			isa = PBXGroup;
 			children = (
+				8A5BFEFE248EEDD900F34DCB /* Utilities */,
+				8A5BFEF5248DE03700F34DCB /* Model */,
+				8A5BFEF4248DE03200F34DCB /* View */,
+				8A5BFEFD248EEB6F00F34DCB /* ViewModel */,
+				8A5BFEF3248DE02700F34DCB /* Controller */,
+				8A5BFEFA248DF01700F34DCB /* WebService */,
 				8A5BFEC3248DDDBB00F34DCB /* AppDelegate.swift */,
 				8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */,
-				8A5BFEC7248DDDBB00F34DCB /* ViewController.swift */,
-				8A5BFEC9248DDDBB00F34DCB /* Main.storyboard */,
 				8A5BFECC248DDDBD00F34DCB /* Assets.xcassets */,
 				8A5BFECE248DDDBD00F34DCB /* LaunchScreen.storyboard */,
 				8A5BFED1248DDDBD00F34DCB /* Info.plist */,
@@ -126,6 +132,51 @@
 				8A5BFEE7248DDDBD00F34DCB /* Info.plist */,
 			);
 			path = "Envoy-CoffeeUITests";
+			sourceTree = "<group>";
+		};
+		8A5BFEF3248DE02700F34DCB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A5BFEF6248DE04D00F34DCB /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8A5BFEF4248DE03200F34DCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A5BFEF8248DE10200F34DCB /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A5BFEF5248DE03700F34DCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A5BFEFA248DF01700F34DCB /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				8A5BFEFB248EE6B800F34DCB /* WebService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		8A5BFEFD248EEB6F00F34DCB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A5BFEFE248EEDD900F34DCB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +285,6 @@
 			files = (
 				8A5BFED0248DDDBD00F34DCB /* LaunchScreen.storyboard in Resources */,
 				8A5BFECD248DDDBD00F34DCB /* Assets.xcassets in Resources */,
-				8A5BFECB248DDDBB00F34DCB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +309,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5BFEC8248DDDBB00F34DCB /* ViewController.swift in Sources */,
 				8A5BFEC4248DDDBB00F34DCB /* AppDelegate.swift in Sources */,
+				8A5BFEF9248DE10200F34DCB /* HomeView.swift in Sources */,
 				8A5BFEC6248DDDBB00F34DCB /* SceneDelegate.swift in Sources */,
+				8A5BFEFC248EE6B800F34DCB /* WebService.swift in Sources */,
+				8A5BFEF7248DE04D00F34DCB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +349,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8A5BFEC9248DDDBB00F34DCB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A5BFECA248DDDBB00F34DCB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8A5BFECE248DDDBD00F34DCB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

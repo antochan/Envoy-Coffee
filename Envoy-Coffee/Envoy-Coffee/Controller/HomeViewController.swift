@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Envoy-Coffee
 //
 //  Created by Antonio Chan on 2020/6/7.
@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
+    let homeView = HomeView()
+    
+    override func loadView() {
+        super.loadView()
+        view = homeView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
+    
 }
-
