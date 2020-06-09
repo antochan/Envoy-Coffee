@@ -16,6 +16,11 @@
 		8A5BFEF7248DE04D00F34DCB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEF6248DE04D00F34DCB /* HomeViewController.swift */; };
 		8A5BFEF9248DE10200F34DCB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEF8248DE10200F34DCB /* HomeView.swift */; };
 		8A5BFEFC248EE6B800F34DCB /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEFB248EE6B800F34DCB /* WebService.swift */; };
+		8A5BFF00248EF67300F34DCB /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEFF248EF67300F34DCB /* Venue.swift */; };
+		8A5BFF02248EF9F400F34DCB /* VenueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFF01248EF9F400F34DCB /* VenueList.swift */; };
+		8A5BFF04248EFC7500F34DCB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFF03248EFC7500F34DCB /* HomeViewModel.swift */; };
+		8A5BFF06248F002300F34DCB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFF05248F002300F34DCB /* AppConstants.swift */; };
+		8A5BFF08248F01F100F34DCB /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFF07248F01F100F34DCB /* ViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		8A5BFEF6248DE04D00F34DCB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A5BFEF8248DE10200F34DCB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8A5BFEFB248EE6B800F34DCB /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		8A5BFEFF248EF67300F34DCB /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		8A5BFF01248EF9F400F34DCB /* VenueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueList.swift; sourceTree = "<group>"; };
+		8A5BFF03248EFC7500F34DCB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8A5BFF05248F002300F34DCB /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		8A5BFF07248F01F100F34DCB /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +163,8 @@
 		8A5BFEF5248DE03700F34DCB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8A5BFEFF248EF67300F34DCB /* Venue.swift */,
+				8A5BFF01248EF9F400F34DCB /* VenueList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +180,7 @@
 		8A5BFEFD248EEB6F00F34DCB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8A5BFF03248EFC7500F34DCB /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +188,8 @@
 		8A5BFEFE248EEDD900F34DCB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8A5BFF05248F002300F34DCB /* AppConstants.swift */,
+				8A5BFF07248F01F100F34DCB /* ViewController+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -310,8 +325,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5BFEC4248DDDBB00F34DCB /* AppDelegate.swift in Sources */,
+				8A5BFF06248F002300F34DCB /* AppConstants.swift in Sources */,
+				8A5BFF00248EF67300F34DCB /* Venue.swift in Sources */,
 				8A5BFEF9248DE10200F34DCB /* HomeView.swift in Sources */,
+				8A5BFF04248EFC7500F34DCB /* HomeViewModel.swift in Sources */,
 				8A5BFEC6248DDDBB00F34DCB /* SceneDelegate.swift in Sources */,
+				8A5BFF08248F01F100F34DCB /* ViewController+Extensions.swift in Sources */,
+				8A5BFF02248EF9F400F34DCB /* VenueList.swift in Sources */,
 				8A5BFEFC248EE6B800F34DCB /* WebService.swift in Sources */,
 				8A5BFEF7248DE04D00F34DCB /* HomeViewController.swift in Sources */,
 			);

@@ -27,11 +27,6 @@ protocol NetworkRouter: AnyObject {
 class WebService: NetworkRouter {
     var fetchDataWasCalled = false
     
-    private let baseURL = "https://api.foursquare.com/v2/"
-    private let clientId = "C0APJW4F1MIJHC3IOFNF5BZFCKBHWOPGPQOO0XWRFBNOROJJ"
-    private let clientSecret = "2JJQF13S10ERG1NVOQZZZX5PPHJWKVPIS4KPGWFY13SN4QET"
-    private let envoyOfficeCoordinates = "37.775299,-122.398064"
-    
     func fetchData<T>(urlString: String, objectType: T.Type, completion: @escaping (Result<T>) -> Void) where T : Decodable {
         fetchDataWasCalled = true
         let session = URLSession.shared
