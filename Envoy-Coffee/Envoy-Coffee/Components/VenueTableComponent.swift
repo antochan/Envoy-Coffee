@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class VenueTableComponent: UIView, Component, Reusable {
     struct ViewModel {
@@ -70,10 +71,6 @@ class VenueTableComponent: UIView, Component, Reusable {
         label.textColor = .lightGray
         return label
     }()
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - Spacing.thirtyTwo, height: 190)
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,6 +91,12 @@ class VenueTableComponent: UIView, Component, Reusable {
             venuePriceLabel.text = "No price range"
         }
         venueDistanceLabel.text = "\(viewModel.venueData.location?.distance ?? 0)m away"
+        
+        if viewModel.venueImageURL != "" {
+            if let imageURL = URL(string: viewModel.venueImageURL) {
+                venueImageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "placeholder"), options: [.transition(.fade(0.2))])
+            }
+        }
     }
     
     func prepareForReuse() {

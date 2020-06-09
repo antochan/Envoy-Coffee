@@ -73,7 +73,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueCell", for: indexPath) as! ComponentTableViewCell<VenueTableComponent>
-        print(viewModel.venuePhotoImageURLs[safe: indexPath.row])
         let cellComponentVM = VenueTableComponent.ViewModel(venueData: viewModel.firstGroup[indexPath.row].venue, venueImageURL: viewModel.venuePhotoImageURLs[safe: indexPath.row] ?? "")
         let viewModel = ComponentTableViewCell<VenueTableComponent>.ViewModel(componentViewModel: cellComponentVM)
         cell.apply(viewModel: viewModel)
@@ -82,7 +81,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        tableView.estimatedRowHeight = 190
+        tableView.estimatedRowHeight = 160
         return UITableView.automaticDimension
     }
     
