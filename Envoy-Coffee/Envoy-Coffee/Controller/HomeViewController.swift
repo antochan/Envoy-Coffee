@@ -73,7 +73,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueCell", for: indexPath) as! ComponentTableViewCell<VenueTableComponent>
-        let cellComponentVM = VenueTableComponent.ViewModel(venueData: viewModel.firstGroup[indexPath.row].venue)
+        print(viewModel.venuePhotoImageURLs[safe: indexPath.row])
+        let cellComponentVM = VenueTableComponent.ViewModel(venueData: viewModel.firstGroup[indexPath.row].venue, venueImageURL: viewModel.venuePhotoImageURLs[safe: indexPath.row] ?? "")
         let viewModel = ComponentTableViewCell<VenueTableComponent>.ViewModel(componentViewModel: cellComponentVM)
         cell.apply(viewModel: viewModel)
         cell.selectionStyle = .none
@@ -97,13 +98,28 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - WebService
 extension HomeViewController {
     private func getVenueList() {
-        webService.fetchData(urlString: viewModel.requestURLString, objectType: VenueList.self) { [weak self] result in
+        webService.fetchData(urlString: viewModel.mainRequestURL, objectType: VenueList.self) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let venueList):
                 strongSelf.viewModel.venueList = venueList
+                strongSelf.getVenuePhotos()
             case .failure(let AppErrors):
                 strongSelf.handleNetworkError(error: AppErrors)
+            }
+        }
+    }
+    
+    private func getVenuePhotos() {
+        viewModel.venuIds.forEach {
+            webService.fetchData(urlString: viewModel.photoRequestURL(venueId: $0), objectType: VenuePhotoResponse.self) { [weak self] result in
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let venuePhotoResponse):
+                    strongSelf.viewModel.venuePhotoResponse.append(venuePhotoResponse)
+                case .failure(let AppErrors):
+                    strongSelf.handleNetworkError(error: AppErrors)
+                }
             }
         }
     }

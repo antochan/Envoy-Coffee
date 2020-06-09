@@ -11,6 +11,7 @@ import UIKit
 class VenueTableComponent: UIView, Component, Reusable {
     struct ViewModel {
         let venueData: Venue
+        let venueImageURL: String
     }
     
     private let cardView: RoundedShadowView = {
