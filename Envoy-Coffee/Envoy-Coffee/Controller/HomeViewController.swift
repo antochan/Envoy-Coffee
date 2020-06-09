@@ -10,11 +10,20 @@ import UIKit
 
 class HomeViewController: UIViewController {
     let homeView = HomeView()
+    private let homeHeaderView = HomeHeaderView()
     private var webService: WebService
+    
+    private var limit = 0 {
+        didSet {
+            getVenueList()
+        }
+    }
     
     private var viewModel = HomeViewModel.defaultViewModel {
         didSet {
-            print(viewModel)
+            DispatchQueue.main.async {
+                self.homeView.tableView.reloadData()
+            }
         }
     }
     
@@ -34,9 +43,55 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         getVenueList()
     }
     
+    func setupTableView() {
+        homeView.tableView.register(ComponentTableViewCell<VenueTableComponent>.self, forCellReuseIdentifier: "VenueCell")
+        homeView.tableView.delegate = self
+        homeView.tableView.dataSource = self
+    }
+}
+
+//MARK: - TableView Datasource & Delegate
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        homeHeaderView.applyHeader(locationName: viewModel.venueList.response.headerFullLocation,
+                                   totalResults: viewModel.venueList.response.totalResults,
+                                   loadedResults: viewModel.limit)
+        return homeHeaderView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 140
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.firstGroup.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VenueCell", for: indexPath) as! ComponentTableViewCell<VenueTableComponent>
+        let cellComponentVM = VenueTableComponent.ViewModel(venueData: viewModel.firstGroup[indexPath.row].venue)
+        let viewModel = ComponentTableViewCell<VenueTableComponent>.ViewModel(componentViewModel: cellComponentVM)
+        cell.apply(viewModel: viewModel)
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.estimatedRowHeight = 190
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard limit < viewModel.venueList.response.totalResults else { return }
+        if indexPath.section == tableView.numberOfSections - 1 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            limit += 10
+            viewModel.limit = limit
+        }
+    }
 }
 
 //MARK: - WebService

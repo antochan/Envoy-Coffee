@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A476E6A248F268D00EDC619 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E69248F268D00EDC619 /* HomeHeaderView.swift */; };
+		8A476E6D248F270600EDC619 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E6C248F270600EDC619 /* Components.swift */; };
+		8A476E70248F273400EDC619 /* ComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E6F248F273400EDC619 /* ComponentTableViewCell.swift */; };
+		8A476E72248F278200EDC619 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E71248F278200EDC619 /* Fonts.swift */; };
+		8A476E74248F27E000EDC619 /* CircularImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E73248F27E000EDC619 /* CircularImageButton.swift */; };
+		8A476E76248F282100EDC619 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E75248F282100EDC619 /* RoundedShadowView.swift */; };
+		8A476E78248F291200EDC619 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E77248F291200EDC619 /* View+Extensions.swift */; };
+		8A476E7A248F33C000EDC619 /* VenueTableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E79248F33C000EDC619 /* VenueTableComponent.swift */; };
 		8A5BFEC4248DDDBB00F34DCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC3248DDDBB00F34DCB /* AppDelegate.swift */; };
 		8A5BFEC6248DDDBB00F34DCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */; };
 		8A5BFECD248DDDBD00F34DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BFECC248DDDBD00F34DCB /* Assets.xcassets */; };
@@ -41,6 +49,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A476E69248F268D00EDC619 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		8A476E6C248F270600EDC619 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		8A476E6F248F273400EDC619 /* ComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTableViewCell.swift; sourceTree = "<group>"; };
+		8A476E71248F278200EDC619 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		8A476E73248F27E000EDC619 /* CircularImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageButton.swift; sourceTree = "<group>"; };
+		8A476E75248F282100EDC619 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
+		8A476E77248F291200EDC619 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		8A476E79248F33C000EDC619 /* VenueTableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTableComponent.swift; sourceTree = "<group>"; };
 		8A5BFEC0248DDDBB00F34DCB /* Envoy-Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Envoy-Coffee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5BFEC3248DDDBB00F34DCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +104,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A476E68248F267E00EDC619 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8A5BFEF8248DE10200F34DCB /* HomeView.swift */,
+				8A476E69248F268D00EDC619 /* HomeHeaderView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8A476E6B248F26FA00EDC619 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8A476E6C248F270600EDC619 /* Components.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8A476E6E248F272000EDC619 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8A476E6F248F273400EDC619 /* ComponentTableViewCell.swift */,
+				8A476E73248F27E000EDC619 /* CircularImageButton.swift */,
+				8A476E75248F282100EDC619 /* RoundedShadowView.swift */,
+				8A476E79248F33C000EDC619 /* VenueTableComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		8A5BFEB7248DDDBB00F34DCB = {
 			isa = PBXGroup;
 			children = (
@@ -111,12 +155,13 @@
 		8A5BFEC2248DDDBB00F34DCB /* Envoy-Coffee */ = {
 			isa = PBXGroup;
 			children = (
-				8A5BFEFE248EEDD900F34DCB /* Utilities */,
 				8A5BFEF5248DE03700F34DCB /* Model */,
 				8A5BFEF4248DE03200F34DCB /* View */,
 				8A5BFEFD248EEB6F00F34DCB /* ViewModel */,
 				8A5BFEF3248DE02700F34DCB /* Controller */,
 				8A5BFEFA248DF01700F34DCB /* WebService */,
+				8A5BFEFE248EEDD900F34DCB /* Utilities */,
+				8A476E6E248F272000EDC619 /* Components */,
 				8A5BFEC3248DDDBB00F34DCB /* AppDelegate.swift */,
 				8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */,
 				8A5BFECC248DDDBD00F34DCB /* Assets.xcassets */,
@@ -155,7 +200,7 @@
 		8A5BFEF4248DE03200F34DCB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A5BFEF8248DE10200F34DCB /* HomeView.swift */,
+				8A476E68248F267E00EDC619 /* Home */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,8 +233,11 @@
 		8A5BFEFE248EEDD900F34DCB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8A476E6B248F26FA00EDC619 /* Components */,
 				8A5BFF05248F002300F34DCB /* AppConstants.swift */,
 				8A5BFF07248F01F100F34DCB /* ViewController+Extensions.swift */,
+				8A476E71248F278200EDC619 /* Fonts.swift */,
+				8A476E77248F291200EDC619 /* View+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -324,15 +372,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A476E72248F278200EDC619 /* Fonts.swift in Sources */,
 				8A5BFEC4248DDDBB00F34DCB /* AppDelegate.swift in Sources */,
+				8A476E6D248F270600EDC619 /* Components.swift in Sources */,
 				8A5BFF06248F002300F34DCB /* AppConstants.swift in Sources */,
+				8A476E76248F282100EDC619 /* RoundedShadowView.swift in Sources */,
 				8A5BFF00248EF67300F34DCB /* Venue.swift in Sources */,
 				8A5BFEF9248DE10200F34DCB /* HomeView.swift in Sources */,
+				8A476E78248F291200EDC619 /* View+Extensions.swift in Sources */,
 				8A5BFF04248EFC7500F34DCB /* HomeViewModel.swift in Sources */,
 				8A5BFEC6248DDDBB00F34DCB /* SceneDelegate.swift in Sources */,
+				8A476E6A248F268D00EDC619 /* HomeHeaderView.swift in Sources */,
 				8A5BFF08248F01F100F34DCB /* ViewController+Extensions.swift in Sources */,
+				8A476E7A248F33C000EDC619 /* VenueTableComponent.swift in Sources */,
 				8A5BFF02248EF9F400F34DCB /* VenueList.swift in Sources */,
 				8A5BFEFC248EE6B800F34DCB /* WebService.swift in Sources */,
+				8A476E74248F27E000EDC619 /* CircularImageButton.swift in Sources */,
+				8A476E70248F273400EDC619 /* ComponentTableViewCell.swift in Sources */,
 				8A5BFEF7248DE04D00F34DCB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

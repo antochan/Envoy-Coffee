@@ -32,4 +32,6 @@ struct VenueStats: Codable {
 struct VenuePrice: Codable {
     /// Scale out of 3, 1 being cheap and 3 being expensive
     let tier: Int
+    let message: String
+    let currency: String
 }
