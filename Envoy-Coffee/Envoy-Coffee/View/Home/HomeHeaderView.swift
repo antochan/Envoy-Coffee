@@ -30,7 +30,7 @@ class HomeHeaderView: UIView {
         return label
     }()
     
-    private let sortButton: CircularImageButton = {
+    let sortButton: CircularImageButton = {
         let sortButton = CircularImageButton()
         sortButton.translatesAutoresizingMaskIntoConstraints = false
         sortButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)

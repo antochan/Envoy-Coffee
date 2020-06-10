@@ -8,22 +8,40 @@
 
 import Foundation
 
+struct FilterConfigurations {
+    let clientID: String
+    let clientSecret: String
+    let sectionQuery: String
+    let radius: Int?
+    
+    static let defaultFilterConfiguration = FilterConfigurations(clientID: AppConstants.clientId,
+                                                                 clientSecret: AppConstants.clientSecret,
+                                                                 sectionQuery: "coffee",
+                                                                 radius: nil)
+}
+
 struct HomeViewModel {
     var venueList: VenueList
     var limit: Int = RequestConfig.venuesPerPage
     var venuePhotoResponse: [VenuePhotoResponse]
+    var filterConfigurations: FilterConfigurations
     
     static let defaultViewModel = HomeViewModel(venueList: VenueList(response: VenueListResponse(headerFullLocation: "",
                                                                                                  totalResults: 0,
                                                                                                  groups: [])
                                                                      ),
-                                                venuePhotoResponse: []
+                                                venuePhotoResponse: [],
+                                                filterConfigurations: FilterConfigurations.defaultFilterConfiguration
     )
 }
 
 extension HomeViewModel {
     var mainRequestURL: String {
-        return AppConstants.baseURL + "venues/explore?client_id=" + AppConstants.clientId + "&client_secret=" + AppConstants.clientSecret + "&ll=" + AppConstants.envoyOfficeCoordinates + "&section=coffee&v=20200608" + "&limit=\(limit)"
+        var radiusURLQuery = ""
+        if let radius = filterConfigurations.radius {
+            radiusURLQuery = "&radius=\(radius)"
+        }
+        return AppConstants.baseURL + "venues/explore?client_id=" + filterConfigurations.clientID + "&client_secret=" + filterConfigurations.clientSecret + "&ll=" + AppConstants.envoyOfficeCoordinates + "&section=" + filterConfigurations.sectionQuery + radiusURLQuery + "&v=20200608" + "&limit=\(limit)"
     }
     
     func photoRequestURL(venueId: String) -> String {

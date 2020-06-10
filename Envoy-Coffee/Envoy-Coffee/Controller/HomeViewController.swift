@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        configureButtonActions()
         getVenueList()
     }
     
@@ -52,6 +53,20 @@ class HomeViewController: UIViewController {
         homeView.tableView.register(ComponentTableViewCell<VenueTableComponent>.self, forCellReuseIdentifier: "VenueCell")
         homeView.tableView.delegate = self
         homeView.tableView.dataSource = self
+    }
+    
+    func configureButtonActions() {
+        homeHeaderView.sortButton.actions = { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.presentFilterMenu()
+        }
+    }
+    
+    func presentFilterMenu() {
+        let filterVC = FilterViewController()
+        present(filterVC, animated: true) {
+            filterVC.filterView.cancelButton.fadeIn(duration: 0.5, delay: 0)
+        }
     }
 }
 
