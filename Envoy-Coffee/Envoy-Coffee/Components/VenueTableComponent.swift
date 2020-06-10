@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Cosmos
 
 class VenueTableComponent: UIView, Component, Reusable {
     struct ViewModel {
@@ -71,6 +72,21 @@ class VenueTableComponent: UIView, Component, Reusable {
         label.textColor = .lightGray
         return label
     }()
+    
+    private let starView: CosmosView = {
+        let starView = CosmosView()
+        starView.translatesAutoresizingMaskIntoConstraints = false
+        starView.settings.fillMode = .full
+        starView.settings.updateOnTouch = false
+        starView.settings.starMargin = 2
+        starView.settings.filledColor = .black
+        starView.settings.emptyBorderColor = .darkGray
+        starView.settings.filledBorderColor = .black
+        starView.settings.starSize = 12
+        starView.settings.textFont = UIFont.main(size: 12)
+        starView.rating = 0
+        return starView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -98,6 +114,14 @@ class VenueTableComponent: UIView, Component, Reusable {
                 venueImageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "placeholder"), options: [.transition(.fade(0.2))])
             }
         }
+        
+        if let rating = viewModel.venueData.rating, let totalSignals = viewModel.venueData.ratingSignals {
+            starView.rating = rating
+            starView.text = "(\(totalSignals))"
+        } else {
+            starView.rating = 0
+            starView.text = "(No Reviews)"
+        }
     }
     
     func prepareForReuse() {
@@ -113,7 +137,7 @@ private extension VenueTableComponent {
     
     func configureSubviews() {
         addSubview(cardView)
-        cardView.addSubviews(venueImageView, venueInfoStack)
+        cardView.addSubviews(venueImageView, venueInfoStack, starView)
         venueInfoStack.addArrangedSubviews([venueNameLabel, venueLocationLabel, venuePriceLabel, venueDistanceLabel])
     }
     
@@ -131,7 +155,10 @@ private extension VenueTableComponent {
             
             venueInfoStack.leadingAnchor.constraint(equalTo: venueImageView.trailingAnchor, constant: Spacing.sixteen),
             venueInfoStack.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -Spacing.sixteen),
-            venueInfoStack.centerYAnchor.constraint(equalTo: cardView.centerYAnchor)
+            venueInfoStack.topAnchor.constraint(equalTo: venueImageView.topAnchor, constant: Spacing.sixteen),
+            
+            starView.leadingAnchor.constraint(equalTo: venueImageView.trailingAnchor, constant: Spacing.sixteen),
+            starView.bottomAnchor.constraint(equalTo: venueImageView.bottomAnchor, constant: -Spacing.sixteen)
         ])
     }
 }

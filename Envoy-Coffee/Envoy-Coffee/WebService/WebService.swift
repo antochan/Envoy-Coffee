@@ -44,7 +44,6 @@ class WebService: NetworkRouter {
                 completion(.failure(.dataNotFound))
                 return
             }
-            
             do {
                 let decodedObject = try JSONDecoder().decode(objectType, from: data)
                 completion(.success(decodedObject))

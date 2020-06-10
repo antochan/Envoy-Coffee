@@ -14,6 +14,8 @@ struct Venue: Codable {
     let location: VenueLocation?
     let stats: VenueStats?
     let price: VenuePrice?
+    let rating: Double?
+    let ratingSignals: Int?
 }
 
 struct VenueLocation: Codable {
