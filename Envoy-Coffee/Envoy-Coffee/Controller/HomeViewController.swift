@@ -64,6 +64,7 @@ class HomeViewController: UIViewController {
     
     func presentFilterMenu() {
         let filterVC = FilterViewController(filterConfigs: viewModel.filterConfigurations)
+        filterVC.delegate = self
         present(filterVC, animated: true) {
             filterVC.filterView.cancelButton.fadeIn(duration: 0.5, delay: 0)
         }
@@ -162,5 +163,15 @@ extension HomeViewController {
         case .invalidURL:
             displayAlert(message: "Invalid URL")
         }
+    }
+}
+
+//MARK: - FilterDelegate
+extension HomeViewController: FilterDelegate {
+    func applyNewFilter(filterConfigs: FilterConfigurations) {
+        viewModel.limit = RequestConfig.venuesPerPage
+        viewModel.venuePhotoResponse.removeAll()
+        viewModel.filterConfigurations = filterConfigs
+        page = 1
     }
 }

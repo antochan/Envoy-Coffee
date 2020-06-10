@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol FilterDelegate: AnyObject {
+    func applyNewFilter(filterConfigs: FilterConfigurations)
+}
+
 class FilterViewController: UIViewController {
     let filterView = FilterView()
+    weak var delegate: FilterDelegate?
     private var filterConfigurations: FilterConfigurations {
         didSet {
             filterView.applyFilterView(filterConfigs: filterConfigurations)
@@ -72,9 +77,57 @@ class FilterViewController: UIViewController {
             guard let strongSelf = self else { return }
             strongSelf.filterConfigurations.sectionQuery = SectionConstants.arts.rawValue
         }
+        
+        /// Debug Clients
+        filterView.clientIdTextField.delegate = self
+        filterView.clientSecretTextField.delegate = self
+        
+        /// Submit Filter Buttons
+        filterView.applyFilterButton.addTarget(self, action: #selector(applyNewFilters), for: .touchUpInside)
+        filterView.resetToDefaultButton.addTarget(self, action: #selector(resetFilters), for: .touchUpInside)
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         filterConfigurations.radius = Int(sender.value.rounded())
+    }
+    
+    @objc func applyNewFilters() {
+        delegate?.applyNewFilter(filterConfigs: filterConfigurations)
+        dismiss(animated: true)
+    }
+    
+    @objc func resetFilters() {
+        delegate?.applyNewFilter(filterConfigs: FilterConfigurations.defaultFilterConfiguration)
+        dismiss(animated: true)
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension FilterViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case FilterTextfieldTags.clientID.rawValue:
+            guard let clientId = textField.text else {
+                filterConfigurations.clientID = AppConstants.clientId
+                return
+            }
+            if clientId == "" {
+                filterConfigurations.clientID = AppConstants.clientId
+            } else {
+                filterConfigurations.clientID = clientId
+            }
+        case FilterTextfieldTags.clientSecret.rawValue:
+            guard let clientSecret = textField.text else {
+                filterConfigurations.clientSecret = AppConstants.clientSecret
+                return
+            }
+            if clientSecret == "" {
+                filterConfigurations.clientSecret = AppConstants.clientSecret
+            } else {
+                filterConfigurations.clientSecret = clientSecret
+            }
+        default:
+            break
+        }
     }
 }

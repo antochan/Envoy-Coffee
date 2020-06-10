@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum FilterTextfieldTags: Int {
+    case clientID = 1
+    case clientSecret = 2
+}
+
 class FilterView: UIView {
     let cancelButton: CircularImageButton = {
         let cancelButton = CircularImageButton()
@@ -191,9 +196,10 @@ class FilterView: UIView {
         return label
     }()
     
-    private let clientIdTextField: UITextField = {
+    let clientIdTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.main(size: 13)
+        textField.tag = FilterTextfieldTags.clientID.rawValue
         return textField
     }()
     
@@ -207,9 +213,10 @@ class FilterView: UIView {
         return label
     }()
     
-    private let clientSecretTextField: UITextField = {
+    let clientSecretTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.main(size: 13)
+        textField.tag = FilterTextfieldTags.clientSecret.rawValue
         return textField
     }()
     

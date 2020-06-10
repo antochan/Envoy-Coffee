@@ -62,7 +62,7 @@ class HomeHeaderView: UIView {
         homeSubtitleLabel.text = locationName
         var radiusQueryString = ""
         if let radius = radius {
-            radiusQueryString = "within \(radius) meters"
+            radiusQueryString = " within \(radius) meters"
         }
         let loadedResultsValue = loadedResults > totalResults ? totalResults : loadedResults
         searchQueryLabel.text = "Showing \(loadedResultsValue) out of \(totalResults) \(sectionQuery) venues" + radiusQueryString
