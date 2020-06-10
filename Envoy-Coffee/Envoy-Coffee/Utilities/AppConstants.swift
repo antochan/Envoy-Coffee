@@ -17,7 +17,6 @@ enum AppConstants {
     //firstClientId = C0APJW4F1MIJHC3IOFNF5BZFCKBHWOPGPQOO0XWRFBNOROJJ
     //firstClientSecret = 2JJQF13S10ERG1NVOQZZZX5PPHJWKVPIS4KPGWFY13SN4QET
     
-    
     //secondClientId = IGMSP2CS0FTT2TGQUOXFL12FD0T4RZSBB4CZU55WT3XXK3IG
     //secondClientSecret = WVHLWDUWBJSTEUML20PDWATMBXD4WKP11AXGK4XRGHCMZR1K
 }
@@ -31,4 +30,8 @@ public enum Spacing {
     public static let twentyFour: CGFloat = 24
     public static let thirtyTwo: CGFloat = 32
     public static let fortyEight: CGFloat = 48
+}
+
+public enum RequestConfig {
+    public static let venuesPerPage = 10
 }

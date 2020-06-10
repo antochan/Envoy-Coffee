@@ -10,7 +10,7 @@ import Foundation
 
 struct HomeViewModel {
     var venueList: VenueList
-    var limit: Int = 10
+    var limit: Int = RequestConfig.venuesPerPage
     var venuePhotoResponse: [VenuePhotoResponse]
     
     static let defaultViewModel = HomeViewModel(venueList: VenueList(response: VenueListResponse(headerFullLocation: "",
@@ -54,5 +54,9 @@ extension HomeViewModel {
             }
         }
         return imageURLs
+    }
+    
+    var maxRoundedValue: Int {
+        return venueList.response.totalResults.rounding(nearest: RequestConfig.venuesPerPage)
     }
 }

@@ -12,7 +12,7 @@ import Kingfisher
 class VenueTableComponent: UIView, Component, Reusable {
     struct ViewModel {
         let venueData: Venue
-        let venueImageURL: String
+        let venueImageURL: String?
     }
     
     private let cardView: RoundedShadowView = {
@@ -92,15 +92,16 @@ class VenueTableComponent: UIView, Component, Reusable {
         }
         venueDistanceLabel.text = "\(viewModel.venueData.location?.distance ?? 0)m away"
         
-        if viewModel.venueImageURL != "" {
-            if let imageURL = URL(string: viewModel.venueImageURL) {
+        if let venueImageURL = viewModel.venueImageURL {
+            guard venueImageURL != "" else { return }
+            if let imageURL = URL(string: venueImageURL) {
                 venueImageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "placeholder"), options: [.transition(.fade(0.2))])
             }
         }
     }
     
     func prepareForReuse() {
-        // no-op
+        venueImageView.image = #imageLiteral(resourceName: "placeholder")
     }
 }
 

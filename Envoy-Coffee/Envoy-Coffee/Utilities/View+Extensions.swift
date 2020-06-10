@@ -43,3 +43,9 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension Int{
+   func rounding(nearest: Int) -> Int {
+        return nearest * Int(round(Float(self) / Float(nearest)))
+    }
+}

@@ -12,8 +12,9 @@ class HomeViewController: UIViewController {
     let homeView = HomeView()
     private let homeHeaderView = HomeHeaderView()
     private var webService: WebService
+    private var isLoading: Bool = false
     
-    private var limit = 0 {
+    private var page = 1 {
         didSet {
             getVenueList()
         }
@@ -73,7 +74,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueCell", for: indexPath) as! ComponentTableViewCell<VenueTableComponent>
-        let cellComponentVM = VenueTableComponent.ViewModel(venueData: viewModel.firstGroup[indexPath.row].venue, venueImageURL: viewModel.venuePhotoImageURLs[safe: indexPath.row] ?? "")
+        let cellComponentVM = VenueTableComponent.ViewModel(venueData: viewModel.firstGroup[indexPath.row].venue, venueImageURL: viewModel.venuePhotoImageURLs[safe: indexPath.row])
         let viewModel = ComponentTableViewCell<VenueTableComponent>.ViewModel(componentViewModel: cellComponentVM)
         cell.apply(viewModel: viewModel)
         cell.selectionStyle = .none
@@ -85,11 +86,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard limit < viewModel.venueList.response.totalResults else { return }
-        if indexPath.section == tableView.numberOfSections - 1 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            limit += 10
-            viewModel.limit = limit
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView == homeView.tableView {
+            if scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height - 220 {
+                if !isLoading {
+                    isLoading = true
+                    viewModel.limit = (page + 1) * RequestConfig.venuesPerPage
+                    page += 1
+                }
+            }
         }
     }
 }
@@ -99,11 +104,14 @@ extension HomeViewController {
     private func getVenueList() {
         webService.fetchData(urlString: viewModel.mainRequestURL, objectType: VenueList.self) { [weak self] result in
             guard let strongSelf = self else { return }
+            strongSelf.isLoading = true
             switch result {
             case .success(let venueList):
                 strongSelf.viewModel.venueList = venueList
+                strongSelf.isLoading = false
                 strongSelf.getVenuePhotos()
             case .failure(let AppErrors):
+                strongSelf.isLoading = false
                 strongSelf.handleNetworkError(error: AppErrors)
             }
         }
@@ -113,10 +121,13 @@ extension HomeViewController {
         viewModel.venuIds.forEach {
             webService.fetchData(urlString: viewModel.photoRequestURL(venueId: $0), objectType: VenuePhotoResponse.self) { [weak self] result in
                 guard let strongSelf = self else { return }
+                strongSelf.isLoading = true
                 switch result {
                 case .success(let venuePhotoResponse):
+                    strongSelf.isLoading = false
                     strongSelf.viewModel.venuePhotoResponse.append(venuePhotoResponse)
                 case .failure(let AppErrors):
+                    strongSelf.isLoading = false
                     strongSelf.handleNetworkError(error: AppErrors)
                 }
             }
