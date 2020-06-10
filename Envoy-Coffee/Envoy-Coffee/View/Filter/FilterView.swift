@@ -213,6 +213,35 @@ class FilterView: UIView {
         return textField
     }()
     
+    private let buttonStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = Spacing.twelve
+        return stackView
+    }()
+    
+    let resetToDefaultButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Reset To Default", for: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont.main(size: 13)
+        return button
+    }()
+    
+    let applyFilterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Apply Filters", for: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont.main(size: 13)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -244,10 +273,11 @@ private extension FilterView {
     
     func configureSubviews() {
         addSubviews(mainContentScrollView, cancelButton)
-        mainContentScrollView.addSubviews(filterTitleStack, filterStack)
-        filterTitleStack.addArrangedSubviews([filterTitleLabel, filterSubtitleLabel])
+        mainContentScrollView.addSubview(filterStack)
         
-        filterStack.addArrangedSubviews([distanceMainStack, sectionMainStack, debugKeyStack])
+        filterStack.addArrangedSubviews([filterTitleStack, distanceMainStack, sectionMainStack, debugKeyStack, buttonStack])
+        
+        filterTitleStack.addArrangedSubviews([filterTitleLabel, filterSubtitleLabel])
         
         distanceMainStack.addArrangedSubviews([distanceSliderTitleLabel, distanceSlider, distanceSliderLabel])
         
@@ -255,6 +285,8 @@ private extension FilterView {
         sectionFilterStack.addArrangedSubviews([coffeeSection, foodSectionButton, shopsSectionButton, artsSectionButton])
         
         debugKeyStack.addArrangedSubviews([debugTitleLabel, clientIdLabel, clientIdTextField, clientSecretLabel, clientSecretTextField])
+        
+        buttonStack.addArrangedSubviews([resetToDefaultButton, applyFilterButton])
     }
     
     func configureLayout() {
@@ -262,19 +294,21 @@ private extension FilterView {
             mainContentScrollView.topAnchor.constraint(equalTo: topAnchor),
             mainContentScrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainContentScrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            mainContentScrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            mainContentScrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             mainContentScrollView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
             cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.sixteen),
             cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.sixteen),
             
-            filterTitleStack.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: Spacing.sixteen),
-            filterTitleStack.centerXAnchor.constraint(equalTo: mainContentScrollView.centerXAnchor),
-            filterTitleStack.widthAnchor.constraint(equalTo: mainContentScrollView.widthAnchor, multiplier: 0.9),
-            
-            filterStack.topAnchor.constraint(equalTo: filterTitleStack.bottomAnchor, constant: Spacing.fortyEight),
+            filterStack.topAnchor.constraint(equalTo: mainContentScrollView.topAnchor, constant: Spacing.sixty),
             filterStack.widthAnchor.constraint(equalTo: mainContentScrollView.widthAnchor, multiplier: 0.8),
             filterStack.centerXAnchor.constraint(equalTo: mainContentScrollView.centerXAnchor),
+            filterStack.bottomAnchor.constraint(equalTo: mainContentScrollView.bottomAnchor, constant: -Spacing.thirtyTwo),
+            
+            resetToDefaultButton.widthAnchor.constraint(equalTo: mainContentScrollView.widthAnchor, multiplier: 0.8),
+            resetToDefaultButton.heightAnchor.constraint(equalToConstant: 35),
+            applyFilterButton.widthAnchor.constraint(equalTo: mainContentScrollView.widthAnchor, multiplier: 0.8),
+            applyFilterButton.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
 }
