@@ -60,7 +60,7 @@ class FilterView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = Spacing.thirtyTwo
+        stackView.spacing = Spacing.sixty
         return stackView
     }()
     
@@ -164,6 +164,55 @@ class FilterView: UIView {
         return label
     }()
     
+    private let debugKeyStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.twelve
+        return stackView
+    }()
+    
+    private let debugTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.mainBold(size: 15)
+        label.text = "Debug: Use your own Keys"
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let clientIdLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.main(size: 12)
+        label.textColor = .darkGray
+        label.numberOfLines = 1
+        label.text = "Client Id:"
+        return label
+    }()
+    
+    private let clientIdTextField: UITextField = {
+        let textField = UITextField()
+        textField.font = UIFont.main(size: 13)
+        return textField
+    }()
+    
+    private let clientSecretLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.main(size: 12)
+        label.textColor = .darkGray
+        label.numberOfLines = 1
+        label.text = "Client Secret:"
+        return label
+    }()
+    
+    private let clientSecretTextField: UITextField = {
+        let textField = UITextField()
+        textField.font = UIFont.main(size: 13)
+        return textField
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -178,6 +227,9 @@ class FilterView: UIView {
         distanceSlider.value = Float(filterConfigs.radius ?? 200)
         distanceSliderLabel.text = "\(filterConfigs.radius ?? 200) meters"
         sectionFilterLabel.text = "Selected Category: " + filterConfigs.sectionQuery
+        
+        clientIdTextField.text = filterConfigs.clientID
+        clientSecretTextField.text = filterConfigs.clientSecret
     }
     
 }
@@ -195,12 +247,14 @@ private extension FilterView {
         mainContentScrollView.addSubviews(filterTitleStack, filterStack)
         filterTitleStack.addArrangedSubviews([filterTitleLabel, filterSubtitleLabel])
         
-        filterStack.addArrangedSubviews([distanceMainStack, sectionMainStack])
+        filterStack.addArrangedSubviews([distanceMainStack, sectionMainStack, debugKeyStack])
         
         distanceMainStack.addArrangedSubviews([distanceSliderTitleLabel, distanceSlider, distanceSliderLabel])
         
         sectionMainStack.addArrangedSubviews([sectionCategoryTitleLabel, sectionFilterStack, sectionFilterLabel])
         sectionFilterStack.addArrangedSubviews([coffeeSection, foodSectionButton, shopsSectionButton, artsSectionButton])
+        
+        debugKeyStack.addArrangedSubviews([debugTitleLabel, clientIdLabel, clientIdTextField, clientSecretLabel, clientSecretTextField])
     }
     
     func configureLayout() {
@@ -211,7 +265,7 @@ private extension FilterView {
             mainContentScrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             mainContentScrollView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.fortyEight),
+            cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.sixteen),
             cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.sixteen),
             
             filterTitleStack.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: Spacing.sixteen),

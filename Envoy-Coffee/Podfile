@@ -8,6 +8,7 @@ target 'Envoy-Coffee' do
   # Pods for Envoy-Coffee
   pod 'Kingfisher', '~> 5.0'
   pod 'Cosmos'
+  pod 'IQKeyboardManagerSwift'
 
   target 'Envoy-CoffeeTests' do
     inherit! :search_paths

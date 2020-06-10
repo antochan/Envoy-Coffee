@@ -1,22 +1,26 @@
 PODS:
   - Cosmos (21.0.0)
+  - IQKeyboardManagerSwift (6.5.5)
   - Kingfisher (5.13.3):
     - Kingfisher/Core (= 5.13.3)
   - Kingfisher/Core (5.13.3)
 
 DEPENDENCIES:
   - Cosmos
+  - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Cosmos
+    - IQKeyboardManagerSwift
     - Kingfisher
 
 SPEC CHECKSUMS:
   Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   Kingfisher: d2b3d6a7200c93b34de9afcdf25c8dd9282ec277
 
-PODFILE CHECKSUM: 99f2ec98a88e2bd9962573e7503adf9b8f38274d
+PODFILE CHECKSUM: 8834d81e9a51d6d7c9e5492b189c94e92f5c11dd
 
 COCOAPODS: 1.8.4
