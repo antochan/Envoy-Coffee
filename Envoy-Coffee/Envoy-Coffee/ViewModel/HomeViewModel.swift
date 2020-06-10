@@ -9,10 +9,10 @@
 import Foundation
 
 struct FilterConfigurations {
-    let clientID: String
-    let clientSecret: String
-    let sectionQuery: String
-    let radius: Int?
+    var clientID: String
+    var clientSecret: String
+    var sectionQuery: String
+    var radius: Int?
     
     static let defaultFilterConfiguration = FilterConfigurations(clientID: AppConstants.clientId,
                                                                  clientSecret: AppConstants.clientSecret,

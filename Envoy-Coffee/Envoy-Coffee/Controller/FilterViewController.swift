@@ -10,7 +10,18 @@ import UIKit
 
 class FilterViewController: UIViewController {
     let filterView = FilterView()
-    private let filterConfigurations: FilterConfigurations
+    private var filterConfigurations: FilterConfigurations {
+        didSet {
+            filterView.applyFilterView(filterConfigs: filterConfigurations)
+        }
+    }
+    
+    private enum SectionConstants: String {
+        case coffee = "coffee"
+        case food = "food"
+        case shops = "shops"
+        case arts = "arts"
+    }
     
     override func loadView() {
         super.loadView()
@@ -20,7 +31,7 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtonActions()
-        filterView.applyInitialFilterView(filterConfigs: filterConfigurations)
+        filterView.applyFilterView(filterConfigs: filterConfigurations)
     }
     
     init(filterConfigs: FilterConfigurations) {
@@ -38,10 +49,32 @@ class FilterViewController: UIViewController {
             strongSelf.dismiss(animated: true)
         }
         
+        /// Distance Filter
         filterView.distanceSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+        
+        /// Section Filters
+        filterView.coffeeSection.actions = { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.filterConfigurations.sectionQuery = SectionConstants.coffee.rawValue
+        }
+        
+        filterView.foodSectionButton.actions = { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.filterConfigurations.sectionQuery = SectionConstants.food.rawValue
+        }
+        
+        filterView.shopsSectionButton.actions = { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.filterConfigurations.sectionQuery = SectionConstants.shops.rawValue
+        }
+        
+        filterView.artsSectionButton.actions = { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.filterConfigurations.sectionQuery = SectionConstants.arts.rawValue
+        }
     }
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
-        filterView.distanceSliderLabel.text = "\(sender.value.rounded()) meters"
+        filterConfigurations.radius = Int(sender.value.rounded())
     }
 }

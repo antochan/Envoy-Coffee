@@ -56,11 +56,19 @@ class FilterView: UIView {
         return label
     }()
     
-    let filterStack: UIStackView = {
+    private let filterStack: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = Spacing.sixteen
+        stackView.spacing = Spacing.thirtyTwo
+        return stackView
+    }()
+    
+    private let distanceMainStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.twelve
         return stackView
     }()
     
@@ -81,7 +89,7 @@ class FilterView: UIView {
         return slider
     }()
     
-    let distanceSliderLabel: UILabel = {
+    private let distanceSliderLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont.main(size: 12)
@@ -90,11 +98,68 @@ class FilterView: UIView {
         return label
     }()
     
+    private let sectionMainStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = Spacing.twelve
+        return stackView
+    }()
+    
     private let sectionCategoryTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont.mainBold(size: 15)
         label.text = "Filter categories by:"
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private let sectionFilterStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = Spacing.eight
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    let coffeeSection: CircularImageButton = {
+        let coffeeButton = CircularImageButton()
+        coffeeButton.translatesAutoresizingMaskIntoConstraints = false
+        let coffeeVM = CircularImageButton.ViewModel(image: #imageLiteral(resourceName: "001-coffee"))
+        coffeeButton.apply(viewModel: coffeeVM)
+        return coffeeButton
+    }()
+    
+    let foodSectionButton: CircularImageButton = {
+        let foodButton = CircularImageButton()
+        foodButton.translatesAutoresizingMaskIntoConstraints = false
+        let foodVM = CircularImageButton.ViewModel(image: #imageLiteral(resourceName: "002-cutlery"))
+        foodButton.apply(viewModel: foodVM)
+        return foodButton
+    }()
+    
+    let shopsSectionButton: CircularImageButton = {
+        let shopButton = CircularImageButton()
+        shopButton.translatesAutoresizingMaskIntoConstraints = false
+        let shopVM = CircularImageButton.ViewModel(image: #imageLiteral(resourceName: "004-open"))
+        shopButton.apply(viewModel: shopVM)
+        return shopButton
+    }()
+    
+    let artsSectionButton: CircularImageButton = {
+        let artsButton = CircularImageButton()
+        artsButton.translatesAutoresizingMaskIntoConstraints = false
+        let artsVM = CircularImageButton.ViewModel(image: #imageLiteral(resourceName: "003-paint-palette"))
+        artsButton.apply(viewModel: artsVM)
+        return artsButton
+    }()
+    
+    private let sectionFilterLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.main(size: 12)
+        label.textColor = .darkGray
         label.numberOfLines = 1
         return label
     }()
@@ -109,11 +174,11 @@ class FilterView: UIView {
         commonInit()
     }
     
-    func applyInitialFilterView(filterConfigs: FilterConfigurations) {
+    func applyFilterView(filterConfigs: FilterConfigurations) {
         distanceSlider.value = Float(filterConfigs.radius ?? 200)
         distanceSliderLabel.text = "\(filterConfigs.radius ?? 200) meters"
+        sectionFilterLabel.text = "Selected Category: " + filterConfigs.sectionQuery
     }
-    
     
 }
 
@@ -129,7 +194,13 @@ private extension FilterView {
         addSubviews(mainContentScrollView, cancelButton)
         mainContentScrollView.addSubviews(filterTitleStack, filterStack)
         filterTitleStack.addArrangedSubviews([filterTitleLabel, filterSubtitleLabel])
-        filterStack.addArrangedSubviews([distanceSliderTitleLabel, distanceSlider, distanceSliderLabel, sectionCategoryTitleLabel])
+        
+        filterStack.addArrangedSubviews([distanceMainStack, sectionMainStack])
+        
+        distanceMainStack.addArrangedSubviews([distanceSliderTitleLabel, distanceSlider, distanceSliderLabel])
+        
+        sectionMainStack.addArrangedSubviews([sectionCategoryTitleLabel, sectionFilterStack, sectionFilterLabel])
+        sectionFilterStack.addArrangedSubviews([coffeeSection, foodSectionButton, shopsSectionButton, artsSectionButton])
     }
     
     func configureLayout() {
@@ -140,7 +211,7 @@ private extension FilterView {
             mainContentScrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             mainContentScrollView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.thirtyTwo),
+            cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Spacing.fortyEight),
             cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.sixteen),
             
             filterTitleStack.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: Spacing.sixteen),
