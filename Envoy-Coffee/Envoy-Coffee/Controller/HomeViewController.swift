@@ -170,6 +170,7 @@ extension HomeViewController {
 extension HomeViewController: FilterDelegate {
     func applyNewFilter(filterConfigs: FilterConfigurations) {
         viewModel.limit = RequestConfig.venuesPerPage
+        viewModel.venueList = VenueList(response: VenueListResponse(headerFullLocation: "", totalResults: 0, groups: []))
         viewModel.venuePhotoResponse.removeAll()
         viewModel.filterConfigurations = filterConfigs
         page = 1
