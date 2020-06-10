@@ -51,7 +51,7 @@ class FilterView: UIView {
         label.textAlignment = .center
         label.font = UIFont.mainBold(size: 14)
         label.textColor = .lightGray
-        label.text = "Apply your filters here and explore more coffee shops :)"
+        label.text = "Apply your filters here and explore more around the Envoy Office! :)"
         label.numberOfLines = 0
         return label
     }()
@@ -60,8 +60,43 @@ class FilterView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = Spacing.twelve
+        stackView.spacing = Spacing.sixteen
         return stackView
+    }()
+    
+    private let distanceSliderTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.mainBold(size: 15)
+        label.text = "Distance in meters"
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    let distanceSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 200
+        slider.maximumValue = 1500
+        slider.tintColor = .black
+        return slider
+    }()
+    
+    let distanceSliderLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.main(size: 12)
+        label.textColor = .darkGray
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private let sectionCategoryTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = UIFont.mainBold(size: 15)
+        label.text = "Filter categories by:"
+        label.numberOfLines = 1
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -72,6 +107,11 @@ class FilterView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
+    }
+    
+    func applyInitialFilterView(filterConfigs: FilterConfigurations) {
+        distanceSlider.value = Float(filterConfigs.radius ?? 200)
+        distanceSliderLabel.text = "\(filterConfigs.radius ?? 200) meters"
     }
     
     
@@ -88,7 +128,8 @@ private extension FilterView {
     func configureSubviews() {
         addSubviews(mainContentScrollView, cancelButton)
         mainContentScrollView.addSubviews(filterTitleStack, filterStack)
-        filterStack.addArrangedSubviews([filterTitleLabel, filterSubtitleLabel])
+        filterTitleStack.addArrangedSubviews([filterTitleLabel, filterSubtitleLabel])
+        filterStack.addArrangedSubviews([distanceSliderTitleLabel, distanceSlider, distanceSliderLabel, sectionCategoryTitleLabel])
     }
     
     func configureLayout() {
@@ -106,7 +147,7 @@ private extension FilterView {
             filterTitleStack.centerXAnchor.constraint(equalTo: mainContentScrollView.centerXAnchor),
             filterTitleStack.widthAnchor.constraint(equalTo: mainContentScrollView.widthAnchor, multiplier: 0.9),
             
-            filterStack.topAnchor.constraint(equalTo: filterTitleStack.bottomAnchor, constant: Spacing.thirtyTwo),
+            filterStack.topAnchor.constraint(equalTo: filterTitleStack.bottomAnchor, constant: Spacing.fortyEight),
             filterStack.widthAnchor.constraint(equalTo: mainContentScrollView.widthAnchor, multiplier: 0.8),
             filterStack.centerXAnchor.constraint(equalTo: mainContentScrollView.centerXAnchor),
         ])

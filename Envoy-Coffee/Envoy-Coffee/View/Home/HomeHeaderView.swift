@@ -44,6 +44,7 @@ class HomeHeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.main(size: 12)
         label.textColor = .lightGray
+        label.numberOfLines = 0
         return label
     }()
     
@@ -57,10 +58,14 @@ class HomeHeaderView: UIView {
         commonInit()
     }
     
-    func applyHeader(locationName: String, totalResults: Int, loadedResults: Int) {
+    func applyHeader(locationName: String, totalResults: Int, loadedResults: Int, sectionQuery: String, radius: Int?) {
         homeSubtitleLabel.text = locationName
+        var radiusQueryString = ""
+        if let radius = radius {
+            radiusQueryString = "within \(radius) meters"
+        }
         let loadedResultsValue = loadedResults > totalResults ? totalResults : loadedResults
-        searchQueryLabel.text = "Showing \(loadedResultsValue) out of \(totalResults) Coffee shops"
+        searchQueryLabel.text = "Showing \(loadedResultsValue) out of \(totalResults) \(sectionQuery) venues" + radiusQueryString
     }
 }
 

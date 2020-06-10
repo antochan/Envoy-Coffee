@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
     }
     
     func presentFilterMenu() {
-        let filterVC = FilterViewController()
+        let filterVC = FilterViewController(filterConfigs: viewModel.filterConfigurations)
         present(filterVC, animated: true) {
             filterVC.filterView.cancelButton.fadeIn(duration: 0.5, delay: 0)
         }
@@ -75,7 +75,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         homeHeaderView.applyHeader(locationName: viewModel.venueList.response.headerFullLocation,
                                    totalResults: viewModel.venueList.response.totalResults,
-                                   loadedResults: viewModel.limit)
+                                   loadedResults: viewModel.limit,
+                                   sectionQuery: viewModel.filterConfigurations.sectionQuery,
+                                   radius: viewModel.filterConfigurations.radius)
         return homeHeaderView
     }
     
