@@ -10,6 +10,8 @@
 		5207D50C4A2C458669ADD67B /* Pods_Envoy_CoffeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF910BE03EB04CA2315DBE09 /* Pods_Envoy_CoffeeTests.framework */; };
 		5C6ECCA7468E11C1F61C1BAE /* Pods_Envoy_Coffee_Envoy_CoffeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A23643D4D3FA24D27B9609 /* Pods_Envoy_Coffee_Envoy_CoffeeUITests.framework */; };
 		8A1F2FCE2490853500B3D69F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F2FCD2490853500B3D69F /* FilterViewController.swift */; };
+		8A1F2FD02490B7E600B3D69F /* WebServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F2FCF2490B7E600B3D69F /* WebServiceTests.swift */; };
+		8A1F2FD22490B8F100B3D69F /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1F2FD12490B8F100B3D69F /* HomeViewModelTests.swift */; };
 		8A476E6A248F268D00EDC619 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E69248F268D00EDC619 /* HomeHeaderView.swift */; };
 		8A476E6D248F270600EDC619 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E6C248F270600EDC619 /* Components.swift */; };
 		8A476E70248F273400EDC619 /* ComponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A476E6F248F273400EDC619 /* ComponentTableViewCell.swift */; };
@@ -23,7 +25,6 @@
 		8A5BFEC6248DDDBB00F34DCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEC5248DDDBB00F34DCB /* SceneDelegate.swift */; };
 		8A5BFECD248DDDBD00F34DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BFECC248DDDBD00F34DCB /* Assets.xcassets */; };
 		8A5BFED0248DDDBD00F34DCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5BFECE248DDDBD00F34DCB /* LaunchScreen.storyboard */; };
-		8A5BFEDB248DDDBD00F34DCB /* Envoy_CoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEDA248DDDBD00F34DCB /* Envoy_CoffeeTests.swift */; };
 		8A5BFEE6248DDDBD00F34DCB /* Envoy_CoffeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEE5248DDDBD00F34DCB /* Envoy_CoffeeUITests.swift */; };
 		8A5BFEF7248DE04D00F34DCB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEF6248DE04D00F34DCB /* HomeViewController.swift */; };
 		8A5BFEF9248DE10200F34DCB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5BFEF8248DE10200F34DCB /* HomeView.swift */; };
@@ -60,6 +61,8 @@
 		170DE921B28C86B265B18DBF /* Pods-Envoy-CoffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Envoy-CoffeeTests.release.xcconfig"; path = "Target Support Files/Pods-Envoy-CoffeeTests/Pods-Envoy-CoffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4E8C266610E77264DF9F2801 /* Pods-Envoy-Coffee-Envoy-CoffeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Envoy-Coffee-Envoy-CoffeeUITests.debug.xcconfig"; path = "Target Support Files/Pods-Envoy-Coffee-Envoy-CoffeeUITests/Pods-Envoy-Coffee-Envoy-CoffeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A1F2FCD2490853500B3D69F /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		8A1F2FCF2490B7E600B3D69F /* WebServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceTests.swift; sourceTree = "<group>"; };
+		8A1F2FD12490B8F100B3D69F /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		8A476E69248F268D00EDC619 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		8A476E6C248F270600EDC619 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		8A476E6F248F273400EDC619 /* ComponentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTableViewCell.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		8A5BFECF248DDDBD00F34DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5BFED1248DDDBD00F34DCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5BFED6248DDDBD00F34DCB /* Envoy-CoffeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Envoy-CoffeeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A5BFEDA248DDDBD00F34DCB /* Envoy_CoffeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envoy_CoffeeTests.swift; sourceTree = "<group>"; };
 		8A5BFEDC248DDDBD00F34DCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5BFEE1248DDDBD00F34DCB /* Envoy-CoffeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Envoy-CoffeeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5BFEE5248DDDBD00F34DCB /* Envoy_CoffeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Envoy_CoffeeUITests.swift; sourceTree = "<group>"; };
@@ -210,7 +212,8 @@
 		8A5BFED9248DDDBD00F34DCB /* Envoy-CoffeeTests */ = {
 			isa = PBXGroup;
 			children = (
-				8A5BFEDA248DDDBD00F34DCB /* Envoy_CoffeeTests.swift */,
+				8A1F2FD12490B8F100B3D69F /* HomeViewModelTests.swift */,
+				8A1F2FCF2490B7E600B3D69F /* WebServiceTests.swift */,
 				8A5BFEDC248DDDBD00F34DCB /* Info.plist */,
 			);
 			path = "Envoy-CoffeeTests";
@@ -565,7 +568,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5BFEDB248DDDBD00F34DCB /* Envoy_CoffeeTests.swift in Sources */,
+				8A1F2FD02490B7E600B3D69F /* WebServiceTests.swift in Sources */,
+				8A1F2FD22490B8F100B3D69F /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

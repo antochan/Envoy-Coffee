@@ -119,7 +119,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - WebService
 extension HomeViewController {
-    private func getVenueList() {
+    func getVenueList() {
         webService.fetchData(urlString: viewModel.mainRequestURL, objectType: VenueList.self) { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.isLoading = true
